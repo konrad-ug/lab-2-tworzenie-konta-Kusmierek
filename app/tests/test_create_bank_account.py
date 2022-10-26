@@ -14,17 +14,21 @@ class TestCreateBankAccount(unittest.TestCase):
         
         
     def test_niepoprawny_pesel(self):
-        drugie_konto = Konto("Kacper", "Kacperczyk","800902984")
-        self.assertEqual(drugie_konto.imie, "Kacper", "Imie nie zostało zapisane!")
-        self.assertEqual(drugie_konto.nazwisko, "Kacperczyk", "Nazwisko nie zostało zapisane!")
-        self.assertEqual(drugie_konto.saldo, 0, "Saldo nie jest zerowe!")
-        self.assertEqual(drugie_konto.pesel,"Niepoprawny pesel","Pesel nie został zapisany")
+        niepoprawny_pesel = Konto("Kacper", "Kacperczyk","800902984")
+        self.assertEqual(niepoprawny_pesel.pesel,"Niepoprawny pesel","Pesel nie został zapisany")
 
     def test_bonus(self):
-        trzecie_konto = Konto("Marcin", "Markowski","59092593383","PROM_ABC")
-        self.assertEqual(trzecie_konto.imie, "Marcin", "Imie nie zostało zapisane!")
-        self.assertEqual(trzecie_konto.nazwisko, "Markowski", "Nazwisko nie zostało zapisane!")
-        self.assertEqual(trzecie_konto.saldo, 50, "Saldo się nie zgadza!")
-        self.assertEqual(trzecie_konto.pesel,"59092593383","Pesel nie został zapisany")
+        poprawny_bonus = Konto("Marcin", "Markowski","78092593383","PROM_ABC")
+        niepoprawny_bonus = Konto("Jan", "Jankowski","67094593381","ASDWER")
+        niepoprawny_bonus_keyword = Konto("Paweł","Pawłowski","67094593381","OPROM_XYZ")
+        pesel_under_65 = Konto("Ola","Aleksandrowska","59094593381","PROM_WER")
+        pesel_over_00 = Konto("Kuba","Kubczak","19311233811","PROM_KIL")
+
+        self.assertEqual(poprawny_bonus.saldo, 50, "Saldo się nie zgadza!")
+        self.assertEqual(niepoprawny_bonus.saldo,0,"Saldo się nie zgadza!")
+        self.assertEqual(niepoprawny_bonus_keyword.saldo,0,"Saldo się nie zgadza!")
+        self.assertEqual(pesel_under_65.saldo,0,"Saldo się nie zgadza!")
+        self.assertEqual(pesel_over_00.saldo,50,"Saldo się nie zgadza!")
+
     
     #tutaj proszę dodawać nowe testy
