@@ -32,6 +32,4 @@ class TestCreateBankAccount(unittest.TestCase):
         self.assertEqual(niepoprawny_bonus.saldo,0,"Saldo się nie zgadza!")
         self.assertEqual(niepoprawny_bonus_keyword.saldo,0,"Saldo się nie zgadza!")
         self.assertEqual(pesel_under_65.saldo,0,"Saldo się nie zgadza!")
-
-
-    #tutaj proszę dodawać nowe testy
+    
