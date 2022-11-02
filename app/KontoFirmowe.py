@@ -10,5 +10,11 @@ class KontoFirmowe(Konto):
         if(len(nip)==10):
             self.nip = nip;
         else:
-            self.nip = "Niepoprawny NIP"
+            self.nip = "Niepoprawny NIP!"
+
+    def ExpressTransfer(self,kwota):
+        price = 5;
+        if(self.saldo>=kwota):
+            self.saldo-=kwota+price
+
 
