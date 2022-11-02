@@ -20,13 +20,16 @@ class Konto:
             self.saldo += 50
 
     def TransferMoney(self,kwota):
-        if(self.saldo>=kwota):
-            self.saldo-=kwota
+        if(kwota>0):
+            if(self.saldo>=kwota):
+                self.saldo-=kwota
     
     def ReceiveMoney(self,kwota):
-        self.saldo += kwota;
+        if(kwota>0):
+            self.saldo += kwota;
 
     def ExpressTransfer(self,kwota):
-        price = 1;
-        if(self.saldo>=kwota):
-            self.saldo-=kwota+price
+        if(kwota>0):
+            price = 1;
+            if(self.saldo>=kwota):
+                self.saldo-=kwota+price
