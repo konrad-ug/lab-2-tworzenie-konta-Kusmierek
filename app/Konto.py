@@ -1,3 +1,6 @@
+from pkgutil import extend_path
+
+
 class Konto:
     def __init__(self, imie, nazwisko,pesel,promo=None):
         self.imie = imie
@@ -16,3 +19,17 @@ class Konto:
         if(promo != None and promo.startswith('PROM_') and len(promo)==8 and( int(self.pesel[0:2])>60 or ((int(self.pesel[2:4])>20) and int(self.pesel[2:4])<33))):
             self.saldo += 50
 
+    def TransferMoney(self,kwota):
+        if(kwota>0):
+            if(self.saldo>=kwota):
+                self.saldo-=kwota
+    
+    def ReceiveMoney(self,kwota):
+        if(kwota>0):
+            self.saldo += kwota;
+
+    def ExpressTransfer(self,kwota):
+        if(kwota>0):
+            price = 1;
+            if(self.saldo>=kwota):
+                self.saldo-=kwota+price
