@@ -22,4 +22,19 @@ class KontoFirmowe(Konto):
                 self.historia.insert(0, -kwota)
                 self.historia.insert(0, -price)
 
+    def check_sum_loan_cp(self, kwota):
+        return super().check_sum_loan(2*kwota)
 
+    
+    def check_ZUS(self):
+        if(-1775 in self.historia):
+            return True
+        else:
+            return False
+
+    def take_loan(self, kwota):
+        if (self.check_ZUS() and self.check_sum_loan_cp(kwota)):
+            self.saldo += kwota
+            return True
+        else:
+            return False
