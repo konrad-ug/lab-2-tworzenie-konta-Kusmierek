@@ -38,3 +38,25 @@ class Konto:
                 self.saldo-=kwota+price
                 self.historia.insert(0, -kwota)
                 self.historia.insert(0,-price)
+
+
+    def check_sum_loan(self,kwota):
+        if(len(self.historia)>=5 and sum(self.historia[:5])>kwota):
+            return True
+        else:
+            return False
+
+    def check_last_3(self):
+        if(all([x > 0 for x in self.historia[:3]])):
+            return True
+        else:
+            return False
+
+    def take_loan(self, suma):
+        if (self.check_last_3() and self.check_sum_loan(suma)):
+            self.saldo += suma
+            return True
+        else:
+            return False
+
+    

@@ -44,3 +44,5 @@ class TestFirmowe(unittest.TestCase):
         self.assertEqual(konto_firmowe_exp.saldo,-5,"Saldo się nie zgadza")
         konto_firmowe_exp.ExpressTransfer(800)
         self.assertEqual(konto_firmowe_exp.saldo,-5,"Saldo się nie zgadza")
+
+      
