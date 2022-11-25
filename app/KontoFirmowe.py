@@ -5,6 +5,8 @@ class KontoFirmowe(Konto):
         self.nazwa = nazwa
         self.saldo = 0
         self.NipValidation(nip)
+        self.historia = []
+        
 
     def NipValidation(self,nip):
         if(len(nip)==10 and nip.isnumeric()):
@@ -17,5 +19,7 @@ class KontoFirmowe(Konto):
             price = 5;
             if(self.saldo>=kwota):
                 self.saldo-=kwota+price
+                self.historia.insert(0, -kwota)
+                self.historia.insert(0, -price)
 
 
